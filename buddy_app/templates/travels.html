@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}"> 
+    <title>Travels</title>
+</head>
+    <body>
+        <a href="/logout" class="link">Logout</a>
+        <p class="hello">Hello, {{user.name}}!</p>
+
+        <p class="titleTable">Your Trip Schedules</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Travel Start Date</th>
+                    <th scope="col">Travel End Date</th>
+                    <th scope="col">Plan</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for trips in user.trips.all %}
+                <tr>
+                    <th scope="row"><a href="/travels/destination/{{trips.id}}">{{trips.destination}}</a></th>
+                    <td>{{trips.date_from}}</td>
+                    <td>{{trips.date_to}}</td>
+                    <td>{{trips.desc}}</td>
+                </tr>
+                {% endfor %}
+                {% for joinedTrip in joined %}
+                <tr>
+                    <th scope="row"><a href="/travels/destination/{{joinedTrip.id}}">{{joinedTrip.destination}}</a></th>
+                    <td>{{joinedTrip.date_from}}</td>
+                    <td>{{joinedTrip.date_to}}</td>
+                    <td>{{joinedTrip.desc}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+
+          <p class="titleTable">Other User's Travel Plan</p>
+          <table class="table">
+              <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Travel Start Date</th>
+                    <th scope="col">Travel End Date</th>
+                    <th scope="col">Do You Want to Join?</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for plan in travel %}
+                  <tr>
+                        <th scope="row">{{plan.creator.name}}</th>
+                        <td><a href="/travels/destination/{{plan.id}}">{{plan.destination}}</a></td>
+                        <td>{{plan.date_from}}</td>
+                        <td>{{plan.date_to}}</td>
+                        <td><a href="/join/{{plan.id}}">Join</a></td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+            </table>
+            <a href="/travels/add" class="link">Add Travel Plan</a>
+    </body>
+</html>

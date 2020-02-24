@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+    <title>Login and Registration</title>
+</head>
+    <body>
+        <h2>Welcome!</h2>
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+            <li>{{message}}</li>    
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <div class="container">
+            <div class="left">
+                <h2>Registration</h2>
+                <form action="/register" method="post">
+                    {% csrf_token%}
+                    <input type="hidden" value ="registration">
+                    <p>Name</p> <input type="text" name="name" required>
+                    <p>Username</p> <input type="text" name="username" required>
+                    <p>Password</p> <input type="password" name="password" required>
+                    <p class="passText">*Password should be at least 8 characters</p>
+                    <p>Confirm PW</p> <input type="password" name="confirm_pw" required>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+            <div class="right">
+                <h2>Login</h2>
+                <form action="/login" method="post">
+                    {% csrf_token%}
+                    <input type="hidden" value="login">
+                    <p>Username </p> <input type="text" name="username" required>
+                    <p>Password</p> <input type="password" name="password" required>
+                    <button type="submit">Log in</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

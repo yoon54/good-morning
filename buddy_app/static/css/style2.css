@@ -1,0 +1,17 @@
+.link{
+    margin-left: 700px;
+    margin-right: 20px;
+}
+p{
+    font-size: 20px;
+    display: inline-block;
+}
+form{
+    width: 300px;
+    margin-left: 70px;
+}
+button{
+    display: block;
+    margin-left: 150px;
+    box-shadow: 2px 2px black;
+}

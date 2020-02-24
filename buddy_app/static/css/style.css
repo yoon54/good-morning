@@ -1,0 +1,46 @@
+
+.container{
+    width: 1100px;
+    height: 500px;
+}
+.left{
+    width: 330px;
+    height: 400px;
+    vertical-align: top;
+    display: inline-block;
+    outline: 2px solid black;
+    margin-right: 80px;
+}
+.right{
+    width: 325px;
+    height: 250px;
+    vertical-align:top;
+    display: inline-block;
+    outline: 2px solid black;
+}
+p{
+    font-size: 20px;
+    display: inline-block;
+}
+form{
+    width: 255px;
+    margin-left: 70px;
+}
+h2{
+    margin-left: 70px;
+}
+h4{
+    color: green;
+}
+h3{
+    display: inline-block;
+    margin-right: 500px;
+}
+.passText{
+    font-size: 15px;
+    margin: 0;
+}
+button{
+    margin-left: 150px;
+    box-shadow: 2px 2px black;
+}

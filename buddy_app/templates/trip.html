@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style3.css' %}"> 
+    <title>Trip Info!</title>
+</head>
+    <body>
+        <a href="/travels" class="link">Home</a><a href="/logout">Logout</a>
+        
+        <h2>{{trip.destination}}</h2>
+
+        <div class="indent">
+            <p>Planned By: {{trip.creator.name}}</p>
+            <p>Description: {{trip.desc}}</p>
+            <p>Travel Date From: {{trip.date_from}}</p>
+            <p>Travel Date To: {{trip.date_to}}</p>
+        </div>
+
+        <h3>Other users' joining the trip:</h3>
+
+        {% for users in trip.travelers.all %}
+        <p class="indent">{{users.name}}</p>
+        {% endfor %}
+    </body>
+</html>
