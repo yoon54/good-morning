@@ -4,7 +4,7 @@
     height: 500px;
 }
 .left{
-    width: 330px;
+    width: 350px;
     height: 400px;
     vertical-align: top;
     display: inline-block;
@@ -23,7 +23,7 @@ p{
     display: inline-block;
 }
 form{
-    width: 255px;
+    width: 270px;
     margin-left: 70px;
 }
 h2{

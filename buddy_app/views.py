@@ -24,7 +24,10 @@ def newAccount(request):
         pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
         confirm_pw_hash = bcrypt.hashpw(confirm_pw.encode(), bcrypt.gensalt()).decode()
         registration = User.objects.create(name = request.POST['name'], username = request.POST['username'], password = pw_hash, confirm_pw = confirm_pw_hash)
-        return redirect('/')
+        account = User.objects.filter(username = request.POST['username'])
+        account = account[0]
+        request.session['loggedInAccountID'] = account.id
+        return redirect('/travels')
 
 def login(request):
     errors = User.objects.login_validator(request.POST)
